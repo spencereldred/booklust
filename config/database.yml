@@ -3,7 +3,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: bookme_dev
+  database: booklust_dev
   pool: 5
   timeout: 5000
   host: localhost
@@ -11,7 +11,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: bookme_test
+  database: booklust_test
   pool: 5
   timeout: 5000
   host: localhost
@@ -19,6 +19,6 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: bookme_prod
+  database: booklust_prod
   pool: 5
   timeout: 5000
