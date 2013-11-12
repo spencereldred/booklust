@@ -19,7 +19,7 @@ class Book < ActiveRecord::Base
       # Create BestSellerList
       listname_array.each do |listname|
         new_bs_list = BestSellerList.create("week" => week, "list_source" => "New York Times", "category" => listname)
-        request = Typhoeus.get("http://api.nytimes.com/svc/books/v2/lists/#{week}/#{listname}?api-key=#{NYT_KEY}")
+        request = Typhoeus.get("http://api.nytimes.com/svc/books/v2/lists/#{week}/#{listname}?api-key=#{ENV['NYT_KEY']}")
         sleep(0.2)
         if request
         results = JSON.parse(request.body)
