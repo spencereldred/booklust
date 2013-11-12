@@ -4,5 +4,5 @@ Auth::Application.routes.draw do
   match "/auth/failure", to: "sessions#failure"
   match "/logout", to: "sessions#destroy", :as => "logout"
   resources :identities
-  get '/auth/google_apps', to: "sessions#create"
+  # get '/auth/google_apps', to: "sessions#create"
 end
