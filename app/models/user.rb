@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"]
     end
   end
+
+  validates_presence_of :name
 end
