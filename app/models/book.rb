@@ -92,4 +92,45 @@ class Book < ActiveRecord::Base
       end
     end
   end
+
+  def self.get_amazon_attribs
+  	# -- NOW PASS IT XML_DOCUMENT, GET THE CORRECT CALL   rails c Book.get_amazon_attribs
+
+	xml_document = "/Users/margaretblue/code/sampleamazonxml.xml"
+
+	doc = Nokogiri::XML(File.open(xml_document))
+
+	doc.remove_namespaces!
+
+	amazon_attribs = {}
+
+	doc.xpath('//ItemLookupResponse/Items').each do |node|
+		amazon_attribs["asin"] = node.at_css('ASIN').text
+		amazon_attribs["amazon_ref"] = node.at_css('DetailPageURL').text
+		amazon_attribs["author"] = node.at_css('Author').text
+		amazon_attribs["price"] = node.at_css('FormattedPrice').text
+
+	end
+
+	doc.xpath('//ItemLookupResponse/Items/Item/LargeImage').each do |node|
+		amazon_attribs["amazon_img"] = node.at_css('URL').text
+	 # :asin, :amazon_ref, :amazon_img, :img_height, :img_width, :price, :description, :publisher
+	 	amazon_attribs["img_height"] = node.at_css('Height').text
+	 	amazon_attribs["img_width"] = node.at_css('Width').text
+
+	end
+
+	doc.xpath('//ItemLookupResponse/Items/Item/ItemAttributes').each do |node|
+		amazon_attribs["author"]= node.at_css('Author').text
+		amazon_attribs["publisher"]= node.at_css('Publisher').text
+	end
+
+	doc.xpath('//ItemLookupResponse/Items/Item/ItemAttributes/ListPrice').each do |node|
+		amazon_attribs["price"] = node.at_css('FormattedPrice').text
+	end
+
+	puts amazon_attribs
+  	
+  end
+
 end
