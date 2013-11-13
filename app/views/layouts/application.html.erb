@@ -7,11 +7,22 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= yield %>
+    <header>
+    <div class="bs">
+      <ul class="nav nav-pills" style="float: right; ">
+        <li>
+          <%= render :partial => "layouts/signin" %>
+        </li>
+        <li id="flash-notice" style="float:right; list-style: none; display: inline;">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <% end %>
+        </li>
+      </ul>
     </div>
+
+  </header>
+    <%= yield %>
+
   </body>
 </html>
