@@ -6,6 +6,47 @@ class Book < ActiveRecord::Base
   has_many :users, through: :book_user
   has_many :lists, through: :best_seller_list_book
 
+  def self.amazon_request
+
+    current_time = DateTime.now.utc.strftime("%FT%TZ")
+
+    random_book = Book.all.sample
+    isbn = random_book.isbn13
+
+    params = {
+            "Service" => "AWSECommerceService",
+            "AWSAccessKeyId" => ENV['AMAZON_KEY'],
+            "AssociateTag" => ENV['AMAZON_ASSOCIATE_TAG'],
+            "Condition" => "All",
+            "IdType" => "ISBN",
+            "ItemId" => isbn,
+            "Operation" => "ItemLookup",
+            "ResponseGroup" => "ItemAttributes,Images,Reviews",
+            "SearchIndex" => "Books",
+            "Version" => "2009-01-06",
+            "Timestamp" => current_time
+            }
+
+    secret_key = ENV['AMAZON_SECRET']
+    data = ['GET', 'webservices.amazon.com', '/onca/xml', params.to_query].join("\n")
+
+    sha256 = OpenSSL::Digest::SHA256.new
+    sig = OpenSSL::HMAC.digest(sha256, secret_key, data)
+    signature = Base64.encode64(sig)
+
+    signature_hash = { "Signature" => signature }
+
+    request_url = "http://webservices.amazon.com/onca/xml?"
+
+    formatted_request = request_url + params.to_query + "&" + signature_hash.to_query.chomp.gsub(/%0A/,'')
+
+    # request = Typhoeus.get(formatted_request).body
+
+    puts formatted_request
+
+  end
+
+
   def self.get_nyt_lists
     listname_array = ["trade-fiction-paperback", "e-book-fiction"]
     #listname_array = ["trade-fiction-paperback","young-adult", "combined-print-and-e-book-fiction", "combined-print-and-e-book-nonfiction","manga", "business-books"]
