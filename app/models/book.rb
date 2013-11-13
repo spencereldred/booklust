@@ -6,13 +6,13 @@ class Book < ActiveRecord::Base
   has_many :users, through: :book_user
   has_many :lists, through: :best_seller_list_book
 
-  def self.amazon_request
+  def self.amazon_request(book_obj)
 
     current_time = DateTime.now.utc.strftime("%FT%TZ")
 
-    random_book = Book.all.sample
-    isbn = random_book.isbn13
-
+    #random_book = Book.all.sample
+    #isbn = random_book.isbn13
+    isbn = book_obj.isbn13
     params = {
             "Service" => "AWSECommerceService",
             "AWSAccessKeyId" => ENV['AMAZON_KEY'],
@@ -40,9 +40,8 @@ class Book < ActiveRecord::Base
 
     formatted_request = request_url + params.to_query + "&" + signature_hash.to_query.chomp.gsub(/%0A/,'')
 
-    # request = Typhoeus.get(formatted_request).body
-
-    puts formatted_request
+    request = Typhoeus.get(formatted_request).body
+    p request
 
   end
 
@@ -79,7 +78,8 @@ class Book < ActiveRecord::Base
           new_book = Book.create(
           "title" => book_attribs["title"],
           "isbn10" => book_attribs["isbn10"],
-          "isbn13" => book_attribs["isbn13"]
+          "isbn13" => book_attribs["isbn13"],
+          "description" => book_attribs["description"]
           )
           BestSellerListBook.create(
           "book_id" => new_book.id,
@@ -92,4 +92,64 @@ class Book < ActiveRecord::Base
       end
     end
   end
+
+  def self.get_amazon_attribs(book_obj)
+      # call it with rails c Book.get_amazon_attribs(book_obj)
+    xml_doc = Book.amazon_request(book_obj)
+
+    doc = Nokogiri::XML(xml_doc)
+    doc.remove_namespaces!
+
+    amazon_attribs = {}
+
+    doc.xpath('//ItemLookupResponse/Items').each do |node|
+      possible_attribs = {"ASIN" => "asin",
+                          "DetailPageURL" => "amazon_ref",
+                          "Author" => "author",
+                          "FormattedPrice" => "price"}
+      possible_attribs.each do |amazon_name, booklust_name|
+        if node.at_css(amazon_name)   #if anchor tag exists
+          amazon_attribs[booklust_name] = node.at_css(amazon_name).text
+        end
+      end
+    end
+
+    doc.xpath('//ItemLookupResponse/Items/Item/LargeImage').each do |node|
+      possible_attribs = {"URL" => "amazon_img",
+                          "Height" => "img_height",
+                          "Width" => "img_width"}
+      possible_attribs.each do |amazon_name, booklust_name|
+        if node.at_css(amazon_name)   #if anchor tag exists
+          amazon_attribs[booklust_name] = node.at_css(amazon_name).text
+        end
+      end
+    end
+
+    doc.xpath('//ItemLookupResponse/Items/Item/ItemAttributes').each do |node|
+      possible_attribs = {"Author" => "author",
+                          "Publisher" => "publisher"}
+      possible_attribs.each do |amazon_name, booklust_name|
+        if node.at_css(amazon_name)   #if anchor tag exists
+          amazon_attribs[booklust_name] = node.at_css(amazon_name).text
+        end
+      end
+    end
+
+    doc.xpath('//ItemLookupResponse/Items/Item/ItemAttributes/ListPrice').each do |node|
+      if node.at_css('FormattedPrice')
+        amazon_attribs["price"] = node.at_css('FormattedPrice').text
+      end
+    end
+    book_obj.update_attributes(amazon_attribs)
+    book_obj.save
+  end
+
+  def self.batch_amazon_attribs
+    #books = [Book.find(244), Book.find(245), Book.find(248), Book.find(249)]
+    books = Book.all
+    books.each do |book|
+      Book.get_amazon_attribs(book)
+    end
+  end
+
 end
