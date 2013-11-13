@@ -92,6 +92,7 @@ class Book < ActiveRecord::Base
       end
     end
   end
+
   def self.get_amazon_attribs(book_obj)
       # call it with rails c Book.get_amazon_attribs(book_obj)
     xml_doc = Book.amazon_request(book_obj)
@@ -150,6 +151,5 @@ class Book < ActiveRecord::Base
       Book.get_amazon_attribs(book)
     end
   end
-
 
 end
