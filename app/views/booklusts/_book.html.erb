@@ -1,0 +1,13 @@
+<div class="book img-thumbnail">
+  <div class="overlay-with-popover">
+    <div class="popover-title" style="display: none"><%= book.title %></div>
+    <div class="popover-content" style="display: none">
+      <button type="button" class="btn btn-default btn-sm">Add</button>
+      <%= book.description %>
+    </div>
+
+  </div>
+  <div class="center-cropped" style="background-image: url(<%= book.amazon_img %>);">
+    <img src="<%= book.amazon_img %>" />
+  </div>
+</div>

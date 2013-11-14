@@ -14,4 +14,9 @@ $ ->
     $('.overlay-with-popover').popover
       placement: 'auto right'
       trigger: 'hover'
+      html: true
       container: 'body'
+      content: ->
+        return $(this).children('.popover-content').html()
+      title: ->
+        return $(this).children('.popover-title').html()
