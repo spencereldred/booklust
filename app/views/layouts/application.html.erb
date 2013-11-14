@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OmniAuth Example</title>
+    <title>Booklust</title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
   </head>
   <body>
     <header>
-    <div class="bs">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <a class="navbar-brand" href="/">Booklust</a>
+    </nav>
       <ul class="nav nav-pills" style="float: right; ">
         <li>
           <%= render :partial => "layouts/signin" %>
@@ -19,7 +21,6 @@
           <% end %>
         </li>
       </ul>
-    </div>
 
   </header>
     <%= yield %>
