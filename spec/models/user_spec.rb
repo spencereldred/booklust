@@ -55,6 +55,11 @@ describe User do
       user.provider = " "
       user.should_not be_valid
     end
+
+    it 'all attributes are not provided' do
+      new_user = User.new
+      new_user.should_not be_valid
+    end
   end
 
   describe "should validate presence of:" do

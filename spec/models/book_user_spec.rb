@@ -18,6 +18,25 @@ describe BookUser do
     book_user.should_not == nil
   end
 
+  describe "should not be valid when:" do
+
+    it "book_id is not present" do
+      book_user.book_id = " "
+      book_user.should_not be_valid
+    end
+
+    it "user_id is not present" do
+      book_user.user_id = " "
+      book_user.should_not be_valid
+    end
+
+
+    it 'all attributes are not provided' do
+      new_book_user = BookUser.new
+      new_book_user.should_not be_valid
+    end
+  end
+
   describe "should validate: " do
 
     it "user_id" do
