@@ -2,11 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.item {
+
+body {
+  padding-top: 85px;
+}
+
+#books {
+  float: none;
+  margin-left: 50px !important;
+}
+
+.book {
   margin: 5px;
 }
 
-.overlay {
+.overlay-with-popover {
   z-index: 3;
   width: 200px;
   height: 295px;
@@ -18,7 +28,7 @@
   -webkit-transition: opacity .01s ease-in-out;
 }
 
-.overlay:hover {
+.overlay-with-popover:hover {
   opacity: 1;
   background-color: rgba(255,255,255,0.2);
   transition: opacity .01s ease-in-out;
