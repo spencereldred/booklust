@@ -19,8 +19,16 @@ describe BookUser do
     should validate_presence_of :user_id
   end
 
-  it "should validate user_id" do
+  it "should have specified user_id" do
+    book_user.user_id.should == 5
+  end
+
+  it "should validate book_id" do
     should validate_presence_of :book_id
+  end
+
+  it "should have specified book_id" do
+    book_user.book_id.should == 3
   end
 
   it "should belong to book" do
