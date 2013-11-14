@@ -5,4 +5,5 @@ class BookUser < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :user_id, :book_id
+  validates :star_rating, inclusion: { in: [1..5] }
 end

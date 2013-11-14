@@ -1,16 +1,30 @@
 require 'spec_helper'
 
 describe Identity do
-  it 'should have a name' do
-    identity = Identity.create(name: 'Tobey Henderson')
-    identity.respond_to?(:name).should == true
-    identity.name.should_not == nil
-  end
-  it 'should have an email' do
-    identity = Identity.create(email: "test@test.com")
-    identity.respond_to?(:email).should == true
-    identity.email.should_not == nil
+  let (:identity) {Identity.create(name: "Tobey Henderson", email: "test@tester.com") }
+  describe 'should have a' do
+    it 'name' do
+      identity.respond_to?(:name).should == true
+    end
+
+    it 'an email' do
+      identity.respond_to?(:email).should == true
+    end
   end
 
-  it { should validate_uniqueness_of(:email) }
+  describe 'should NOT be nil' do
+    it 'name' do
+      identity.name.should_not == nil
+    end
+
+    it 'email' do
+      identity.email.should_not == nil
+    end
+  end
+
+  describe 'validation' do
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+    it { should_not allow_value("test@test").for(:email) }
+  end
 end
