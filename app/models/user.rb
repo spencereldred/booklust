@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  validates_presence_of :name
-  validates_presence_of :uid
-  validates_presence_of :provider
+  validates_presence_of :name, :uid, :provider
+
 end
