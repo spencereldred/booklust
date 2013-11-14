@@ -1,22 +1,25 @@
 require 'spec_helper'
 
 describe BestSellerList do
+  let(:best_seller_list) {BestSellerList.create(week: '2013-10-20', category: 'trade-fiction-paperback', list_source: 'New York Times')}
   it 'should have a week' do
-    week_test = BestSellerList.create(week: '2013-10-20')
-    week_test.respond_to?(:week).should == true
-    week_test.week.should_not == nil
+    best_seller_list.respond_to?(:week).should == true
+  end
+  it 'should not have a week of nil' do
+    best_seller_list.week.should_not == nil
   end
   it 'should have a category' do
-    category_test = BestSellerList.create(category: 'trade-fiction-paperback')
-    category_test.respond_to?(:category).should == true
-    category_test.category.should_not == nil
+    best_seller_list.respond_to?(:category).should == true
+  end
+  it 'should not have a category of nil' do
+    best_seller_list.category.should_not == nil
   end
   it 'should have a list_source' do
-    list_source_test = BestSellerList.create(list_source: 'New York Times')
-    list_source_test.respond_to?(:list_source).should == true
-    list_source_test.list_source.should_not == nil
+    best_seller_list.respond_to?(:list_source).should == true
   end
-
+  it 'should not have a list_source of nil' do
+    best_seller_list.list_source.should_not == nil
+  end
   it 'should validate presence of :list_source' do
     should validate_presence_of :list_source
   end
@@ -29,7 +32,13 @@ describe BestSellerList do
     should validate_presence_of :week
   end
 
-  # it { should have_many(:books).through(:best_seller_list_book) }
+  it "should have many books" do
+    b = BestSellerList.reflect_on_association(:books)
+    b.macro.should == :has_many
+  end
 
+  it "should have many books through best_seller_list_book" do
+   should have_many(:books).through(:best_seller_list_book)
+  end
 
 end
