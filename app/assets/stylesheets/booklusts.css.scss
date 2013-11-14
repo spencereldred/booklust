@@ -1,3 +1,97 @@
 // Place all the styles related to the booklusts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item {
+  margin: 5px;
+}
+
+.overlay {
+  z-index: 3;
+  width: 200px;
+  height: 295px;
+  padding: 10px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity .01s ease-in-out;
+  -moz-transition: opacity .01s ease-in-out;
+  -webkit-transition: opacity .01s ease-in-out;
+}
+
+.overlay:hover {
+  opacity: 1;
+  background-color: rgba(255,255,255,0.2);
+  transition: opacity .01s ease-in-out;
+  -moz-transition: opacity .01s ease-in-out;
+  -webkit-transition: opacity .01s ease-in-out;
+}
+
+.btn {
+  float: right;
+}
+
+.center-cropped {
+  width: 200px;
+  height: 295px;
+  background-position: center center;
+  background-size: 200px Auto;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Set the image to fill its parent and make transparent */
+.center-cropped img {
+  min-width: 100%;
+  min-width: 100%;
+
+  /* IE 8 */
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+  /* modern browsers */
+  opacity: 0;
+}
+
+
+li {
+  display:inline;
+
+}
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
