@@ -11,6 +11,12 @@ $ ->
       itemSelector: '.book'
       layoutMode: 'masonry'
 
+    $('.dropdown-menu li a').click ->
+      selector = $(this).attr('data-filter')
+      $container.isotope filter : selector
+      category = $(this).text() + " " + "<span class='caret'></span>"
+      $("#category-btn:first-child").html category
+
     $('.overlay-with-popover').popover(
       placement: 'auto right'
       trigger: 'manual'
@@ -21,7 +27,11 @@ $ ->
       title: ->
         return $(this).children('.popover-title').html()
       ).on('mouseenter', ->
-      _this = this
       $(".popover").hide()
       $(this).popover "show"
+      )
+
+
+    $('.container').on('mouseenter', ->
+      $(".popover").hide()
       )

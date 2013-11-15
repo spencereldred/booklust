@@ -5,3 +5,9 @@
  *= require_self
  *= require_tree .
 */
+
+.navbar-brand {
+  font-family: 'Cherry Swash', cursive;
+  color: red !important;
+  left-margin: 200px !important;
+}
