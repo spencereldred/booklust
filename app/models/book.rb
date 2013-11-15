@@ -11,9 +11,6 @@ class Book < ActiveRecord::Base
   def self.amazon_request(book_obj)
 
     current_time = DateTime.now.utc.strftime("%FT%TZ")
-
-    #random_book = Book.all.sample
-    #isbn = random_book.isbn13
     isbn = book_obj.isbn13
     params = {
             "Service" => "AWSECommerceService",
@@ -50,8 +47,12 @@ class Book < ActiveRecord::Base
   def self.get_nyt_lists
     listname_array = ["trade-fiction-paperback", "young-adult", "combined-print-and-e-book-nonfiction","combined-print-and-e-book-fiction", "manga"]
 
+    current_week = (DateTime.now + 2.days).strftime("%F")
     week_array = ["2013-11-17","2013-11-10","2013-11-03"]
     #week_array = ["2013-11-17","2013-11-10","2013-11-03", "2013-10-27", "2013-10-20", "2013-10-13", "2013-10-06", "2013-09-29","2013-09-22", "2013-09-15", "2013-09-08", "2013-09-01", "2013-08-25", "2013-08-18", "2013-08-11", "2013-08-04", "2013-07-28", "2013-07-21", "2013-07-14", "2013-07-07","2013-06-30", "2013-06-23", "2013-06-16", "2013-06-09", "2013-06-02", "2013-05-26", "2013-05-19", "2013-05-12", "2013-05-05", "2013-04-28", "2013-04-21", "2013-04-14", "2013-04-07", "2013-03-31", "2013-03-24", "2013-03-17", "2013-03-10", "2013-03-03", "2013-02-24", "2013-02-17", "2013-02-10", "2013-02-03", "2013-01-27", "2013-01-20", "2013-01-13", "2013-01-06"]
+    if current_week > week_array[0]
+      week_array = [current_week]
+    end
 
     book_item = []
     week_array.each do |week|
@@ -144,8 +145,9 @@ class Book < ActiveRecord::Base
   end
 
   def self.batch_amazon_attribs
-    #books = [Book.all.sample, Book.all.sample, Book.all.sample, Book.all.sample, Book.all.sample, Book.all.sample]
-    books = Book.all
+    #books = [Book.all.sample, Book.all.sample, Book.last, Book.all.sample, Book.all.sample, Book.all.sample, Book.all.sample]
+    #books = Book.all
+    books = Book.where(asin: nil)
     books.each do |book|
       Book.get_amazon_attribs(book)
       sleep(2)
