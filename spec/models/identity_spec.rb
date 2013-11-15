@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Identity do
   let (:identity) {Identity.create(name: "Tobey Henderson", email: "test@tester.com") }
-  describe 'should have a' do
+  describe 'should have a(n)' do
     it 'name' do
       identity.respond_to?(:name).should == true
     end
 
-    it 'an email' do
+    it 'email' do
       identity.respond_to?(:email).should == true
     end
   end
@@ -26,5 +26,8 @@ describe Identity do
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email) }
     it { should_not allow_value("test@test").for(:email) }
+    it { should_not allow_value("test").for(:email) }
+    it { should allow_value("test@test.com").for(:email) }
+
   end
 end
