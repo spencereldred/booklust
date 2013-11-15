@@ -11,12 +11,17 @@ $ ->
       itemSelector: '.book'
       layoutMode: 'masonry'
 
-    $('.overlay-with-popover').popover
+    $('.overlay-with-popover').popover(
       placement: 'auto right'
-      trigger: 'hover'
+      trigger: 'manual'
       html: true
       container: 'body'
       content: ->
         return $(this).children('.popover-content').html()
       title: ->
         return $(this).children('.popover-title').html()
+      ).on('mouseenter', ->
+      _this = this
+      $(".popover").hide()
+      $(this).popover "show"
+      )
