@@ -6,9 +6,20 @@ $ ->
   $('body').on "click", 'button[class="btn btn-danger btn-sm add"]', (event) ->
     event.preventDefault()
 
-    $book_id = $(this).data("id")
+    book_id = $(this).data("id")
 
-    book_user = { book_id: $book_id }
+    $.post( "/book_users", {book_id: book_id})
 
-    $.post( "/booklusts", {book_user: book_user})
+
+  $('body').on "click", 'button[class="btn btn-danger btn-sm remove"]', (event) ->
+    event.preventDefault()
+
+    book_id = $(this).data("id")
+    url = "/book_users/" + book_id
+    console.log(book_id)
+    $.ajax
+      url: url
+      type: "DELETE"
+
+
 
