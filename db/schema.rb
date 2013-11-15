@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(:version => 20131112005356) do
   create_table "book_users", :force => true do |t|
     t.integer  "user_id"
     t.integer  "book_id"
-    t.integer  "vote",        :default => 0
-    t.boolean  "purchased",   :default => false
-    t.boolean  "read",        :default => false
+    t.integer  "vote"
+    t.boolean  "purchased"
+    t.boolean  "read"
     t.integer  "star_rating"
     t.string   "bucket"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "books", :force => true do |t|

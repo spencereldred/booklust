@@ -15,6 +15,15 @@
         <li>
           <%= render :partial => "layouts/signin" %>
         </li>
+        <% if current_user %>
+          <li style="float: right;">
+            <a href="book_users"><button class="btn btn-primary btn-md">List</button></a>
+          <li>
+          <li style="float: right;">
+            <a href="booklusts"><button class="btn btn-primary btn-md">Books</button></a>
+          <li>
+        <% end %>
+
         <li id="flash-notice" style="float:right; list-style: none; display: inline;">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
