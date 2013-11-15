@@ -5,8 +5,8 @@ describe "StaticPages" do
   describe "Landing page" do
     before { visit root_path }
 
-    it "should have the content 'sessions#new'" do
-      expect(page).to have_content('sessions#new')
+    it "should have the content 'Booklust connects readers with the books they love.'" do
+      expect(page).to have_content('Booklust connects readers with the books they love.')
     end
 
     it "should have title 'BookLust'" do
