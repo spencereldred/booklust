@@ -2,9 +2,13 @@
   <div class="overlay-with-popover">
     <div class="popover-title" data-style="primary" style="display: none"><center><h4><%= book.title.downcase.split(" ").map(&:capitalize).join(" ") %></h4></div></center>
     <div class="popover-content" data-style="primary" style="display: none">
-    <%= book.description %><br />
-      <a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-success btn-sm" data-html="true">Buy</button></a>
-      <button id="add-<%=book.id%>" type="button" class="btn btn-warning btn-sm" data-html="true">Remove from Reading List</button>
+    <strong>Author:</strong> <%= book.author %><br />
+
+    <div class="book-description">
+      <%= book.description %><br />
+    </div>
+      <a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm" data-html="true">Buy</button></a>
+      <button id="add-<%=book.id%>" type="button" class="btn btn-danger btn-sm" data-html="true">Remove From Reading List</button>
     </div>
 
   </div>
