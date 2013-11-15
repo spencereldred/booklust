@@ -3,8 +3,10 @@ class Book < ActiveRecord::Base
   :amazon_ref, :amazon_img, :img_height, :img_width, :price,
   :description, :publisher
 
-  has_many :users, through: :book_user
-  has_many :lists, through: :best_seller_list_book
+  has_many :book_users
+  has_many :users, through: :book_users
+  has_many :best_seller_list_book
+  has_many :best_seller_lists, through: :best_seller_list_book
 
   def self.amazon_request(book_obj)
 
