@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BookUser do
   let(:book_user) { BookUser.create(book_id: 3, user_id: 5, vote: 1, purchased: false, read: true, star_rating: 4, bucket: "favorites") }
 
-  describe "shoule have a:" do
+  describe "should have a:" do
 
     it 'book_id' do
       book_user.respond_to?(:book_id).should == true
