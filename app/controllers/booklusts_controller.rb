@@ -13,18 +13,13 @@ class BooklustsController < ApplicationController
           book_array << Book.find(books[i].book_id)
           i += 1
         end
-        book_array
+        book_array = book_array.uniq {|book| book.title}
     end
 
     @trade_fiction_paperback = fill_book_list_variables("trade-fiction-paperback")
-    @trade_fiction_paperback = @trade_fiction_paperback.uniq {|book| book.isbn13}
     @young_adult = fill_book_list_variables("young-adult")
-    @young_adult = @young_adult.uniq {|book| book.isbn13}
     @combined_print_and_e_book_nonfiction = fill_book_list_variables("combined-print-and-e-book-nonfiction")
-    @combined_print_and_e_book_nonfiction = @combined_print_and_e_book_nonfiction.uniq {|book| book.isbn13}
     @combined_print_and_e_book_fiction = fill_book_list_variables("combined-print-and-e-book-fiction")
-    @combined_print_and_e_book_fiction = @combined_print_and_e_book_fiction.uniq {|book| book.isbn13}
     @manga = fill_book_list_variables("manga")
-    @manga = @manga.uniq {|book| book.isbn13}
   end
 end
