@@ -56,13 +56,11 @@ describe BestSellerListBook do
 
   describe "relationship to other models" do
     it 'is a join table that belongs to :book' do
-      b = BestSellerListBook.reflect_on_association(:book)
-      b.macro.should == :belongs_to
+      should belong_to(:book)
     end
 
     it 'is a join table that belongs to :best_seller_list' do
-      b = BestSellerListBook.reflect_on_association(:best_seller_list)
-      b.macro.should == :belongs_to
+      should belong_to(:best_seller_list)
     end
   end
 end

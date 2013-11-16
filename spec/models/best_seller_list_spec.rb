@@ -48,15 +48,14 @@ describe BestSellerList do
 
 
   describe 'relationship to other models:' do
+
     it "should have many books" do
-      b = BestSellerList.reflect_on_association(:books)
-      b.macro.should == :has_many
+      should have_many(:books)
     end
 
-    # this test doesn't work:
-  # it "should have many books through best_seller_list_book" do
-  #  should have_many(:books).through(:best_seller_list_book)
-  # end
+    it "should have many books through best_seller_list_book" do
+     should have_many(:books).through(:best_seller_list_book)
+    end
   end
 
 

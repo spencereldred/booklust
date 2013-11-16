@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if !current_user
   end
 
+  def logged_in
+    redirect_to booklusts_path if current_user
+  end
+
 private
 
   def current_user
