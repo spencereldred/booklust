@@ -6,6 +6,12 @@
  *= require_tree .
 */
 
+body {
+  padding-top: 100px;
+  background-color: rgb(250,250,250) !important;
+
+}
+
 .navbar-brand {
   font-family: 'Cherry Swash', cursive;
   color: rgba(154,33,27, 1) !important;
