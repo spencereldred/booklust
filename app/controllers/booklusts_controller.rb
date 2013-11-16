@@ -2,7 +2,8 @@ class BooklustsController < ApplicationController
   before_filter :authorize
 
   def index
-    @books = Book.all
+    @books = Book.includes(:book_users).all
+    @bookuser = current_user.books
 
     @trade_fiction_paperback = fill_book_list_variables("trade-fiction-paperback")
     @young_adult = fill_book_list_variables("young-adult")

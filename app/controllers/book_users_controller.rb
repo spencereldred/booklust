@@ -8,7 +8,7 @@ class BookUsersController < ApplicationController
 
   def create
     if !BookUser.find_by_book_id(params[:book_id])
-      BookUser.create(book_id: params[:book_id], user_id: current_user.id)
+      BookUser.create(book_id: params[:book_id], user_id: current_user.id, vote: 1)
     end
     render nothing: true
   end

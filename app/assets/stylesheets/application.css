@@ -6,6 +6,18 @@
  *= require_tree .
 */
 
+.add {
+  margin: 5px;
+}
+
+.buy {
+  margin: 5px 5px 5px 0;
+}
+
+.remove {
+  margin: 5px;
+}
+
 body {
   padding-top: 100px;
   background-color: rgb(250,250,250) !important;
