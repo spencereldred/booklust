@@ -12,13 +12,13 @@
   margin: 5px;
 }
 
-.book-description {
-  padding-top: 3px;
-  padding-bottom: 5px;
+.popover-content {
+  padding-bottom: 0px !important;
 }
 
 .btn-danger {
   background-color: rgba(154,33,27,1) !important;
+  border-color: rgba(154,33,27,1) !important;
 }
 
 .overlay-with-popover {
