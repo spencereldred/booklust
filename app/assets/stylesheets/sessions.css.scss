@@ -37,22 +37,20 @@
     display: block;
   }
 }
-h1 {
-  text-align: center;
-  font-family: 'Cherry Swash', cursive;
-}
-#splashTitle {
-  color: rgba(154,33,27,1);
-  font-size: 150px;
-}
-
-#title {
+#landing {
   text-align: center;
   margin: -100px 20px 0px 20px;
 
 }
+#splashTitle {
+  color: rgba(154,33,27,1);
+  font-size: 150px;
+  font-family: 'Cherry Swash', cursive;
+}
+
 #splash {
-  height: 800px;
+  position: fixed;
+  height: 70%;
   width: 100%;
   background-image: url("splash_screen_web_ready.jpg");
   background: -moz-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 59%, rgba(255,255,255,1) 100%), url('splash_screen_web_ready.jpg') no-repeat;
@@ -60,6 +58,7 @@ h1 {
   background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.95) 59%,rgba(255,255,255,1) 100%), url('splash_screen_web_ready.jpg') no-repeat;
   background: -o-linear-gradient(bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.95) 59%,rgba(255,255,255,1) 100%), url('splash_screen_web_ready.jpg') no-repeat;
   background: -ms-linear-gradient(bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.95) 59%,rgba(255,255,255,1) 100%), url('splash_screen_web_ready.jpg') no-repeat;
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.95) 59%,rgba(255,255,255,1) 100%), url('splash_screen_web_ready.jpg') no-repeat;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.90) 59%,rgba(255,255,255,0.95) 100%), url('splash_screen_web_ready.jpg') no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
