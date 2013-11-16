@@ -5,13 +5,13 @@
 $ ->
   $('body').on "click", 'button[class="btn btn-danger btn-sm add"]', (event) ->
     event.preventDefault()
+    $this = $(this)
 
     book_id = $(this).data("id")
 
     $.post( "/book_users", {book_id: book_id})
 
-    # console.log($("btn btn-danger btn-sm add").html)
-    # $("btn btn-danger btn-sm add:first-child").html "Saved!"
+    $this.children().first().html("Saved!")
 
 
   $('body').on "click", 'button[class="btn btn-danger btn-sm remove"]', (event) ->
