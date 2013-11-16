@@ -88,6 +88,17 @@
                 </div>
                 <div class="modal-body">
 
+                  <div>
+                      <a href="/auth/twitter" class="auth_provider">
+                        <%= image_tag "sign-in-with-twitter-gray.png",  alt: "Twitter" %>
+                      </a></br></br></br>
+                    </div>
+                    <div>
+                      <a href="/auth/facebook" class="auth_provider">
+                        <%= image_tag "pressed_404.png", alt: "Facebook" %>
+                      </a>
+                  </div></br></br></br>
+
                   <%= form_tag "/auth/identity/register" do %>
                     <% if @identity && @identity.errors.any? %>
                       <div class="error_messages">

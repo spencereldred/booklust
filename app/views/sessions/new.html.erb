@@ -2,15 +2,7 @@
 <div id="title">
   <h1 id= "splashTitle">Booklust</h1>
   <h2>Connecting you with books you'll love.</h2><br>
-  <a href="">
-    <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
-      Sign in
-    </button>
-  </a>
-  <a href="">
-    <button class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal2">
-      Sign Up
-    </button>
-  </a>
-</div>
+  <%= render :partial => "sessions/signin" %>
+  <%= render :partial => "sessions/signup" %>
+</div></br>
 <div id= "splash"></div>
