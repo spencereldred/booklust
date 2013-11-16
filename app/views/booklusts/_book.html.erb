@@ -6,11 +6,26 @@
 
         <%= book.description %>
 
-        <p><ul class="list-inline">
-          <li><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm" data-html="true">Buy</button></a></li>
+        <p><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm buy" data-html="true">Buy</button></a>
 
-          <li><button id="add-<%=book.id%>" type="button" data-id="<%= book.id %>" class="btn btn-danger btn-sm add" data-html="true"><span class="add button text">Add To Reading List</span></button></li>
-        </ul></p>
+        <button id="add-<%=book.id%>" type="button" data-id="<%= book.id %>" class="btn btn-danger btn-sm add" data-html="true"><span class="add button text">
+
+        <% if book.book_users %>
+
+          <% if book.book_users.first.vote == 1%>
+
+           Saved!
+
+          <% else %>
+
+          <%# binding.pry %>
+
+            Add To Reading List
+
+          <% end %>
+        <% end %>
+
+          </span></button></p>
     </div>
 
   </div>

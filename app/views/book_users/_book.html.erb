@@ -6,11 +6,9 @@
 
         <%= book.description %>
 
-      <p><ul class="list-inline">
-        <li><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm" data-html="true">Buy</button></a></li>
+      <p><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm buy" data-html="true">Buy</button></a>
 
-        <li><button id="add-<%=book.id%>" type="button" class="btn btn-danger btn-sm remove" data-id="<%= book.id %>" data-html="true">Remove From List</button></li>
-        </ul></p>
+        <button id="add-<%=book.id%>" type="button" class="btn btn-danger btn-sm remove" data-id="<%= book.id %>" data-html="true">Remove From List</button></p>
     </div>
 
   </div>
