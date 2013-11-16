@@ -9,11 +9,11 @@ $ ->
       itemSelector: '.book'
       layoutMode: 'masonry'
 
-    $('.dropdown-menu li a').click ->
+    $('.dropdown li a').click ->
       selector = $(this).attr('data-filter')
       $container.isotope filter : selector
-      category = $(this).text() + " " + "<span class='caret'></span>"
-      $("#category-btn:first-child").html category
+      category = $(this).text() + " " + "<b class='caret'></b>"
+      $(".dropdown-toggle:first-child").html category
 
     $('.overlay-with-popover').popover(
       placement: 'auto right'

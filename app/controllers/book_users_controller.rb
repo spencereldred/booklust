@@ -3,6 +3,7 @@ class BookUsersController < ApplicationController
 
   def index
     @books = current_user.books.uniq { |book| book.title }
+    @category = true
   end
 
   def create
