@@ -1,6 +1,27 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper {
+  text-align: center;
+}
+
+.btn {
+  margin: 10px 5px 10px 5px;
+  width: 150px;
+}
+
+#sign-in {
+  postion: absolute;
+}
+
+#sign-up {
+  postion: absolute;
+}
+
+.twitter-button .facebook-button {
+  margin-left: 200px;
+}
 .auth_providers {
   height: 90px;
 }
@@ -22,12 +43,13 @@ h1 {
 }
 #splashTitle {
   color: rgba(154,33,27,1);
-  font-size: 190px;
+  font-size: 150px;
 }
 
 #title {
   text-align: center;
-  margin: 20px;
+  margin: -100px 20px 0px 20px;
+
 }
 #splash {
   height: 800px;

@@ -34,14 +34,25 @@
       </nav>
       <% end %>
 
-      <ul class="nav nav-pills" style="float: right; ">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "alert" : "error" %>" style="text-align: right;">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+      <% end %>
+
+
+
+      <!-- <ul class="nav nav-pills" style="float: right; ">
 
         <li id="flash-notice" style="float:right; list-style: none; display: inline;">
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          <% end %>
+          <%# flash.each do |name, msg| %>
+            <%# content_tag :div, msg, :id => "flash_#{name}" %>
+          <%# end %>
         </li>
-      </ul>
+      </ul> -->
 
   </header>
     <%= yield %>

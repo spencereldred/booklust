@@ -1,6 +1,6 @@
 <a href="">
-  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
-    Sign in
+  <button class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
+    Sign In
   </button>
 </a>
   <!-- Modal -->
@@ -33,15 +33,15 @@
           <p><%= link_to "Log out", logout_path %></p>
         <% else %>
 
-            <div>
-              <a href="/auth/twitter" class="auth_provider">
-                <%= image_tag "sign-in-with-twitter-gray.png",  alt: "Twitter" %>
-              </a></br></br></br>
-            </div>
-            <div>
-              <a href="/auth/facebook" class="auth_provider">
-                <%= image_tag "pressed_404.png", alt: "Facebook" %>
-              </a>
+          <div class="twitter-button" style="margin-left: 185px;">
+            <a href="/auth/twitter" class="auth_provider">
+              <%= image_tag "sign-in-with-twitter-gray.png",  alt: "Twitter" %>
+            </a></br></br></br>
+          </div>
+          <div class="facebook-button" style="margin-left: 170px;">
+            <a href="/auth/facebook" class="auth_provider">
+              <%= image_tag "pressed_404.png", alt: "Facebook" %>
+            </a>
           </div></br></br></br>
 
           <%= form_tag "/auth/identity/callback" do %>
