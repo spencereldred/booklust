@@ -1,14 +1,15 @@
-<div class="book  img-thumbnail">
+<div class="book img-thumbnail" id="book-<%= book.id %>">
   <div class="overlay-with-popover">
     <div class="popover-title" data-style="primary" style="display: none"><h4><%= book.title.downcase.split(" ").map(&:capitalize).join(" ") %></h4></div>
     <div class="popover-content" data-style="primary" style="display: none">
     <p><strong>Author:</strong> <%= book.author %></p>
 
-        <%= book.description %>
+      <%= book.description %>
 
       <p><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm buy" data-html="true">Buy</button></a>
 
-        <button id="add-<%=book.id%>" type="button" class="btn btn-danger btn-sm remove" data-id="<%= book.id %>" data-html="true">Remove From List</button></p>
+      <button id="add-<%=book.id%>" type="button" class="btn btn-danger btn-sm remove" data-id="<%= book.id %>" data-html="true">Remove From List</button></p>
+
     </div>
 
   </div>
