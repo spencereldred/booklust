@@ -90,24 +90,5 @@ describe BookUser do
     end
   end
 
-  # describe "validates range for star_rating" do
-    # it {should ensure_inclusion_of(:star_rating).in_array[] }
-    # it { should allow_value(1).for(:star_rating) }
-    # it { should allow_value(2).for(:star_rating) }
-    # it { should allow_value(3).for(:star_rating) }
-    # it { should allow_value(4).for(:star_rating) }
-    # it { should allow_value(5).for(:star_rating) }
-    # it { should ensure_inclusion_of(:star_rating).in_range(1..5) }
-
-
-    # it {expect(:star_rating).to cover(2)}
-    # it {expect(:star_rating).to cover(3)}
-    # it {expect(:star_rating).to cover(4)}
-    # it {expect(:star_rating).to cover(5)}
-
-    # it { should_not cover(0) }
-    # it { should_not cover(6
-    # it { should_not cover (12) }
-  # end
 
 end

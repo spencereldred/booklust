@@ -21,10 +21,6 @@ describe "StaticPages" do
       expect(page).to have_content('Sign In')
     end
 
-    it "should have the content Sign Up" do
-      expect(page).to have_content('Sign Up')
-    end
-
   end
 
   describe "Booklust landing page" do
@@ -34,14 +30,6 @@ describe "StaticPages" do
     it "should have the content 'Booklust'" do
       expect(page).to have_content('Booklust')
     end
-
-  #   it "should have title 'OmniAuth Example'" do
-  #     expect(page).to have_title('OmniAuth Example')
-  #   end
-
-    # it "should have the content Log Out" do
-    #   expect(page).to have_content('Log Out')
-    # end
 
   end
 
