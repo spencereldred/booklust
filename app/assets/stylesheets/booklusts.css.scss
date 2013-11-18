@@ -21,6 +21,13 @@
   border-color: rgba(154,33,27,1) !important;
 }
 
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: rgba(171,85,81,1) !important;
+  border-color: rgba(171,85,81,1) !important;
+  text-decoration: none;
+}
+
 .overlay-with-popover {
   z-index: 3;
   width: 200px;
