@@ -1,61 +1,57 @@
 <a href="">
-  <button class="btn btn-danger btn-md sign-in" data-toggle="modal" data-target="#myModal">
-    Sign In
+  <button class="btn btn-danger btn-md sign-up" data-toggle="modal" data-target="#myModal2">
+    Sign Up
   </button>
 </a>
-  <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <%if !current_user %>
-        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-        <% else %>
-        <h4 class="modal-title" id="myModalLabel">Log Out</h4>
-        <% end %>
+        <h4 class="modal-title" id="myModalLabel"> Sign Up</h4>
       </div>
       <div class="modal-body">
-        <% if current_user %>
-          <h1>User Profile</h1>
-          <p>
-            <strong>Name:</strong>
-            <%= current_user.name %>
-          </p>
-          <p>
-            <strong>Provider:</strong>
-            <%= current_user.provider %>
-          </p>
-          <p>
-            <strong>OmniAuth UID:</strong>
-            <%= current_user.uid %>
-          </p>
-          <p><%= link_to "Log out", logout_path %></p>
-        <% else %>
 
-          <div class="twitter-button" style="margin-left: 185px;">
-            <a href="/auth/twitter" class="auth_provider">
-              <%= image_tag "sign-in-with-twitter-gray.png",  alt: "Twitter" %>
-            </a></br></br></br>
-          </div>
-          <div class="facebook-button" style="margin-left: 170px;">
-            <a href="/auth/facebook" class="auth_provider">
-              <%= image_tag "pressed_404.png", alt: "Facebook" %>
-            </a>
-          </div></br></br></br>
+        <div class="twitter-button" style="margin-left: 185px;">
+          <a href="/auth/twitter" class="auth_provider">
+            <%= image_tag "sign-in-with-twitter-gray.png",  alt: "Twitter" %>
+          </a></br></br></br>
+        </div>
+        <div class="facebook-button" style="margin-left: 170px;">
+          <a href="/auth/facebook" class="auth_provider">
+            <%= image_tag "pressed_404.png", alt: "Facebook" %>
+          </a>
+        </div></br></br></br>
 
-          <%= form_tag "/auth/identity/callback" do %>
-            <div class="field">
-              <%= label_tag :auth_key, "Email" %><br>
-              <%= text_field_tag :auth_key, nil, placeholder: "Enter email", required: true %>
+        <%= form_tag "/auth/identity/register" do %>
+          <% if @identity && @identity.errors.any? %>
+            <div class="error_messages">
+              <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+              <ul>
+              <% @identity.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
             </div>
-            <div class="field">
-              <%= label_tag :password %><br>
-              <%= password_field_tag :password, nil, placeholder: "Enter password", required: true %>
-            </div>
-            <div class="actions"><%= submit_tag "Login" %></div>
           <% end %>
-
+          <div class="field">
+            <%= label_tag :name %><br>
+            <%= text_field_tag :name, @identity.try(:name), placeholder: "Enter name", required: true %>
+          </div>
+          <div class="field">
+            <%= label_tag :email %><br>
+            <%= text_field_tag :email, @identity.try(:email), placeholder: "Enter email", required: true %>
+          </div>
+          <div class="field">
+            <%= label_tag :password %><br>
+            <%= password_field_tag :password, nil, placeholder: "Enter password", required: true %>
+          </div>
+          <div class="field">
+            <%= label_tag :password_confirmation %><br>
+            <%= password_field_tag :password_confirmation, nil, placeholder: "Re-enter password", required: true %>
+          </div>
+          <div class="actions"><%= submit_tag "Register" %></div>
         <% end %>
 
       </div>
