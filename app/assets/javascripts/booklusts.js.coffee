@@ -29,7 +29,12 @@ $ ->
       $(this).popover "show"
       )
 
-
-    $('.container').on('mouseenter', ->
+    $('header').on('mouseenter', ->
       $(".popover").hide()
       )
+
+    $('#about-link').on "click", (event) ->
+      event.preventDefault()
+
+      $('#aboutModal').modal('show')
+

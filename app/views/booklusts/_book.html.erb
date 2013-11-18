@@ -4,7 +4,7 @@
     <div class="popover-content" data-style="primary" style="display: none">
       <p><strong>Author:</strong> <%= book.author %></p>
 
-        <%= book.description %>
+        <p><%= book.description %></p>
 
         <p><a href=<%= book.amazon_ref %>><button id="buy-<%=book.id%>" type="button" style="float: left" class="btn btn-danger btn-sm buy" data-html="true">Buy</button></a>
 

@@ -11,10 +11,10 @@
       <% if current_user %>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <a class="navbar-brand" href="/">Booklust</a>
-        <ul class="nav navbar-nav">
-          <li><a href="booklusts">Books</a></li>
+        <ul class="nav navbar-nav nav-pills">
+          <li class="<%= 'active' if params[:controller] == 'booklusts' %>"><a href="booklusts">Books</a></li>
+          <li class="<%= 'active' if params[:controller] == 'book_users' %>"><a href="book_users">My Reading List</a></li>
           <% if !@category %>
-          <li><a href="book_users">My Reading List</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -29,6 +29,7 @@
           <%end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a id="about-link" href="#">About</a></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
       </nav>
@@ -44,6 +45,72 @@
       <% end %>
 
   </header>
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">About Booklust</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>Booklust was built as a group project for General Assembly's <%= link_to "Web Development Immersive", "http://generalassemb.ly/education/web-development-immersive" %> using Ruby on Rails, oAuth, PostgreSQL, jQuery, CoffeeScript, Bootstrap, Isotope, Nokogiri, Rspec, and Typhoeus. Thanks to Amazon and the NY Times Bestseller API for data.</p>
+
+        <div class="media">
+          <a class="pull-left" href="https://github.com/spencereldred/">
+            <%= image_tag("spencer.jpg", class: "media-object img-rounded", height: "64", width: "64", alt: "Spencer Eldred") %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Spencer Eldred</h4>
+            <a href="http://github.com/spencereldred">GitHub</a>
+          </div>
+        </div>
+
+        <div class="media">
+          <a class="pull-left" href="https://github.com/zestos">
+            <%= image_tag("luke.jpg", class: "media-object img-rounded", height: "64", width: "64", alt: "Luke Whiting") %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Luke Whiting</h4>
+            <a href="http://lukewhiting.com">Blog</a> |
+            <a href="http://github.com/zestos">Github</a> |
+            <a href="http://linkedin.com/in/lukewhiting">LinkedIn</a> |
+            <a href="http://twitter.com/zestos20">Twitter</a>
+          </div>
+        </div>
+
+        <div class="media">
+          <a class="pull-left" href="https://github.com/margaretblue">
+            <%= image_tag("margaret.jpg", class: "media-object img-rounded", height: "64", width: "64", alt: "Margaret Morris") %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Margaret Morris</h4>
+            <a href="http://github.com/margaretblue">GitHub</a> |
+            <a href="http://linkedin.com/in/margaretblue">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="media">
+          <a class="pull-left" href="https://github.com/JasonLev">
+            <%= image_tag("jason.jpg", class: "media-object img-rounded", height: "64", width: "64", alt: "Jason Levy") %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Jason Levy</h4>
+            <a href="http://github.com/JasonLev">GitHub</a>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <span class="pull-left">&#169; 2013</span>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
     <%= yield %>
   </body>
 </html>
