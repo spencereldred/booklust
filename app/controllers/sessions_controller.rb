@@ -7,15 +7,15 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to booklusts_path, notice: "Welcome #{user.name}, you are signed in!"
+    redirect_to booklusts_path
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "You are signed out!"
+    redirect_to root_url
   end
 
   def failure
-    redirect_to root_url, alert: "Authentication failed, please try again."
+    redirect_to root_url
   end
 end
