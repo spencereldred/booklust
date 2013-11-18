@@ -1,4 +1,18 @@
-<h1>BookUser List of Selected Books</h1>
-<% @books.each do |book| %>
-  <%= render "book", book: book %>
+<% if @books.empty? %>
+<div class="container">
+  <div class="well well-sm">
+    <center><h3>You don't have any books in your reading list yet.</h3></center><br>
+  </div>
+</div>
+
+<% else %>
+
+  <div id="book-lists">
+
+    <% @books.each do |book| %>
+      <%= render "book", book: book %>
+    <% end %>
+
+  </div>
+
 <% end %>

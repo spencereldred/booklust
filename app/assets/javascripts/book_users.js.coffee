@@ -3,6 +3,13 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+
+  $container = $('#book-lists')
+
+  $container.isotope
+    itemSelector: '.book'
+    layoutMode: 'masonry'
+
   $('body').on "click", 'button[class="btn btn-danger btn-sm add"]', (event) ->
     event.preventDefault()
     $this = $(this)
@@ -15,15 +22,14 @@ $ ->
 
   $('body').on "click", 'button[class="btn btn-danger btn-sm remove"]', (event) ->
     event.preventDefault()
-    $container = $('#books')
-    book_id = $(this).data("id")
 
+    book_id = $(this).data("id")
     book_selector = "#book-" + book_id
 
-    $(this).parent().parent().parent().siblings(book_selector).remove()
-    $(this).parent().parent().parent().fadeOut().remove()
+    removed_book = $(this).parent().parent().parent().siblings("#book-lists").children(book_selector)
+    $(this).parent().parent().parent().remove()
 
-    $container.isotope('reLayout')
+    $container.isotope 'remove', removed_book
 
     url = "/book_users/" + book_id
     $.ajax

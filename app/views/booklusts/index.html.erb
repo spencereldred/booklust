@@ -1,44 +1,32 @@
-<div class="container">
+<div id="books">
 
-</div>
+  <% @combined_print_and_e_book_nonfiction.each do |book| %>
+    <% if book.amazon_img !=nil %>
+      <%= render "book", book: book, category: "combined_print_and_e_book_nonfiction" %>
+      <% end %>
+    <% end %>
 
-<div>
+  <% @combined_print_and_e_book_fiction.each do |book| %>
+    <% if book.amazon_img !=nil %>
+      <%= render "book", book: book, category: "combined_print_and_e_book_fiction" %>
+      <% end %>
+    <% end %>
 
-  <div class="row">
+  <% @trade_fiction_paperback.each do |book| %>
+    <% if book.amazon_img !=nil %>
+      <%= render "book", book: book, category: "trade_fiction_paperback" %>
+    <% end %>
+    <% end %>
 
-    <div id="books">
+  <% @young_adult.each do |book| %>
+    <% if book.amazon_img !=nil %>
+      <%= render "book", book: book, category: "young_adult" %>
+      <% end %>
+    <% end %>
 
-      <% @combined_print_and_e_book_nonfiction.each do |book| %>
-        <% if book.amazon_img !=nil %>
-          <%= render "book", book: book, category: "combined_print_and_e_book_nonfiction" %>
-          <% end %>
-        <% end %>
-
-      <% @combined_print_and_e_book_fiction.each do |book| %>
-        <% if book.amazon_img !=nil %>
-          <%= render "book", book: book, category: "combined_print_and_e_book_fiction" %>
-          <% end %>
-        <% end %>
-
-      <% @trade_fiction_paperback.each do |book| %>
-        <% if book.amazon_img !=nil %>
-          <%= render "book", book: book, category: "trade_fiction_paperback" %>
-        <% end %>
-        <% end %>
-
-      <% @young_adult.each do |book| %>
-        <% if book.amazon_img !=nil %>
-          <%= render "book", book: book, category: "young_adult" %>
-          <% end %>
-        <% end %>
-
-      <% @manga.each do |book| %>
-        <% if book.amazon_img !=nil %>
-          <%= render "book", book: book, category: "manga" %>
-          <% end %>
-        <% end %>
-    </div>
-
-  </div>
-
+  <% @manga.each do |book| %>
+    <% if book.amazon_img !=nil %>
+      <%= render "book", book: book, category: "manga" %>
+      <% end %>
+    <% end %>
 </div>

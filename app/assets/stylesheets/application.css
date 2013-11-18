@@ -6,6 +6,16 @@
  *= require_tree .
 */
 
+#aboutModal a {
+  color: rgba(154,33,27,1);
+  text-decoration: none;
+}
+#aboutModal a:hover,
+#aboutModal a:focus {
+  color: rgba(103,22,18,1);
+  text-decoration: underline;
+}
+
 .add {
   margin: 5px;
 }
@@ -19,7 +29,8 @@
 }
 
 body {
-  padding-top: 100px;
+  padding-top: 110px;
+  padding-bottom: 30px;
   background-color: rgb(250,250,250) !important;
 
 }
@@ -27,13 +38,12 @@ body {
 .navbar-brand {
   font-family: 'Cherry Swash', cursive;
   color: rgba(154,33,27, 1) !important;
-  left-margin: 200px !important;
   font-size: 30px !important;
 }
 
 .navbar {
   background-color: rgba(255,255,255,0.9) !important;
-  height: 80px !important;
-  padding: 15px !important;
+  height: 80px;
+  padding: 15px;
   font-size: 18px;
 }
