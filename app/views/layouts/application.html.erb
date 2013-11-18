@@ -12,28 +12,36 @@
 
       <% if current_user %>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/">Booklust</a>
-        <ul class="nav navbar-nav nav-pills">
-          <li class="<%= 'active' if params[:controller] == 'booklusts' %>"><a href="booklusts">Books</a></li>
-          <li class="<%= 'active' if params[:controller] == 'book_users' %>"><a href="book_users">My Reading List</a></li>
-          <% if !@category %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#" data-filter="*">All</a></li>
-                <li><a href="#" data-filter=".combined_print_and_e_book_nonfiction">Nonfiction</a></li>
-                <li><a href="#" data-filter=".combined_print_and_e_book_fiction">Fiction</a></li>
-                <li><a href="#" data-filter=".trade_fiction_paperback">Trade Fiction</a></li>
-                <li><a href="#" data-filter=".manga">Manga</a></li>
-                <li><a href="#" data-filter=".young_adult">Young Adult</a></li>
-              </ul>
-          </li>
-          <%end %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a id="about-link" href="#">About</a></li>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav nav-pills">
+            <li class="<%= 'active' if params[:controller] == 'booklusts' %>"><a href="booklusts">Books</a></li>
+            <li class="<%= 'active' if params[:controller] == 'book_users' %>"><a href="book_users">My Reading List</a></li>
+            <% if !@category %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" data-filter="*">All</a></li>
+                  <li><a href="#" data-filter=".combined_print_and_e_book_nonfiction">Nonfiction</a></li>
+                  <li><a href="#" data-filter=".combined_print_and_e_book_fiction">Fiction</a></li>
+                  <li><a href="#" data-filter=".trade_fiction_paperback">Trade Fiction</a></li>
+                  <li><a href="#" data-filter=".manga">Manga</a></li>
+                  <li><a href="#" data-filter=".young_adult">Young Adult</a></li>
+                </ul>
+            </li>
+            <%end %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="about-link" href="#">About</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
       </nav>
       <% end %>
 
@@ -57,9 +65,9 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Spencer Eldred</h4>
-            <a href="http://github.com/spencereldred">GitHub</a> |
-            <a href="http://www.linkedin.com/pub/spencer-eldred/9/3b4/973">LinkedIn</a> |
-            <a href="https://twitter.com/SpencerEldred">Twitter</a>
+            <a href="http://github.com/spencereldred" target="_blank">GitHub</a> |
+            <a href="http://www.linkedin.com/pub/spencer-eldred/9/3b4/973" target="_blank">LinkedIn</a> |
+            <a href="https://twitter.com/SpencerEldred" target="_blank">Twitter</a>
           </div>
         </div>
 
@@ -69,10 +77,10 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Luke Whiting</h4>
-            <a href="http://lukewhiting.com">Blog</a> |
-            <a href="http://github.com/zestos">Github</a> |
-            <a href="http://linkedin.com/in/lukewhiting">LinkedIn</a> |
-            <a href="http://twitter.com/zestos20">Twitter</a>
+            <a href="http://lukewhiting.com" target="_blank">Blog</a> |
+            <a href="http://github.com/zestos" target="_blank">Github</a> |
+            <a href="http://linkedin.com/in/lukewhiting" target="_blank">LinkedIn</a> |
+            <a href="http://twitter.com/zestos20" target="_blank">Twitter</a>
           </div>
         </div>
 
@@ -82,8 +90,8 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Margaret Morris</h4>
-            <a href="http://github.com/margaretblue">GitHub</a> |
-            <a href="http://linkedin.com/in/margaretblue">LinkedIn</a>
+            <a href="http://github.com/margaretblue" target="_blank">GitHub</a> |
+            <a href="http://linkedin.com/in/margaretblue" target="_blank">LinkedIn</a>
           </div>
         </div>
 
@@ -93,7 +101,10 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Jason Levy</h4>
-            <a href="http://github.com/JasonLev">GitHub</a>
+            <a href="http://www.thejasonlevy.com" target="_blank">Blog</a> |
+            <a href="http://github.com/JasonLev" target="_blank">GitHub</a> |
+            <a href="http://www.linkedin.com/pub/jason-levy/3/6ba/846" target="_blank">LinkedIn</a> |
+            <a href="https://twitter.com/TheJasonLevy" target="_blank">Twitter</a>
           </div>
         </div>
 

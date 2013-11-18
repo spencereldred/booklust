@@ -21,6 +21,10 @@ describe "StaticPages" do
       expect(page).to have_content('Sign In')
     end
 
+    it "should NOT have the content 'Sign Up'" do
+      (page).should_not have_content('Sign Up')
+    end
+
   end
 
   describe "Booklust landing page" do
