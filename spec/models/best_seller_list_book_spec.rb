@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe BestSellerListBook do
-  let(:best_seller_list_book) {BestSellerListBook.create(book_id: 3, best_seller_list_id: 5, rank: 18, number_weeks: 62)}
+  let(:best_seller_list_book) {
+    BestSellerListBook.create(book_id: 3, best_seller_list_id: 5, rank: 18, number_weeks: 62)}
 
   describe 'should have a:' do
     it 'book id' do
