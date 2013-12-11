@@ -11,7 +11,7 @@
         <button id="add-<%=book.id%>" type="button" data-id="<%= book.id %>" class="btn btn-danger btn-sm add" data-html="true"><span class="add button text">
 
 
-        <%= book.book_users.first && book.book_users.first.vote ? "Saved!" : "Add To List" %>
+        <%= current_user.books.include?(book) ? "Saved!" : "Add To List" %>
           </span></button></p>
     </div>
 
