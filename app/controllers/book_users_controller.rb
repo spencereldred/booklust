@@ -16,7 +16,9 @@ class BookUsersController < ApplicationController
   end
 
   def destroy
-    id = BookUser.where(book_id: params[:id])
+    # book = current_user.books.where(book_id: params[:id])
+
+    id = BookUser.where(book_id: params[:id], user_id: current_user.id)
     BookUser.delete(id)
     render nothing: true
   end
