@@ -2,8 +2,9 @@ class BookUsersController < ApplicationController
   before_filter :authorize
 
   def index
-    @books = current_user.books.uniq { |book| book.title }
-    @category = true
+    # @books = current_user.books.uniq { |book| book.title }
+    @books = current_user.books
+    # @category = true
   end
 
   def create

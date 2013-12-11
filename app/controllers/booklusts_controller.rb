@@ -2,15 +2,11 @@ class BooklustsController < ApplicationController
   before_filter :authorize
 
   def index
-<<<<<<< HEAD
-    # @books = Book.includes(:book_users).all
-    # @bookuser = current_user.books
-=======
+
     # @bookuser = current_user.books
     # @books = Book.includes(@book_user).all
 
     # binding.pry
->>>>>>> Book popover tweak
 
     @trade_fiction_paperback = fill_book_list_variables("trade-fiction-paperback")
     @young_adult = fill_book_list_variables("young-adult")
