@@ -2,16 +2,16 @@
       <% categories = {
         @combined_print_and_e_book_nonfiction => "combined_print_and_e_book_nonfiction",
         @combined_print_and_e_book_fiction => "combined_print_and_e_book_fiction",
-        @trade_fiction_paperback => "trade_fiction_paperback", 
-        @young_adult => "young_adult", 
+        @trade_fiction_paperback => "trade_fiction_paperback",
+        @young_adult => "young_adult",
         @manga => "manga"} %>
-      <% categories.each do |cat, str_cat| %>  
+      <% categories.each do |cat, str_cat| %>
             <% cat.each do |book| %>
               <% if book.amazon_img !=nil %>
                 <%= render "book", book: book, category: str_cat %>
                 <% end %>
-              
+
             <% end %>
       <% end %>
- 
+
 </div>
